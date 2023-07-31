@@ -1,5 +1,5 @@
 <h1>Create new user</h1>
-<!--
+<!-- PLAIN VERSION
 <form action="/users/" method="post" accept-charset="UTF-8">
 <label for="username">Username:</label>
 <input type="text" id="username", name="user[username]"><br><br>
@@ -11,7 +11,7 @@
 <input type="submit" value="Submit">
 </form>
 -->
-
+<!-- OLD RAILS VERSION (with form_tag)
 <%= form_tag("/users/", method:"post") do %>
   <%= label_tag(:username, "Username:") %>
   <%= text_field_tag(:username) %>
@@ -24,3 +24,11 @@
   <br><br>
   <input type="submit" value="Submit">
 <% end %>
+ -->
+
+ <%= form_with model: @user do |form| %>
+  <%= form.label :username, 'Username:'%>
+  <%= form.text_field :username %>
+  <br><br>
+  <%= form.submit "Submit" %>
+ <% end %>
