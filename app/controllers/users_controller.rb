@@ -6,6 +6,13 @@ class UsersController < ApplicationController
   def create
     #@user = User.new(username: params["username"], email: params["email"], password: params["password"])
     @user = User.new(user_params)
+    if !@user.valid?
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
   end
 
   private
